@@ -1,0 +1,20 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const connectDatabase = require("./config/dbConfig")
+
+const app = express();
+const port = 3000;
+
+connectDatabase();
+
+// Use body-parser middleware to parse request bodies
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
